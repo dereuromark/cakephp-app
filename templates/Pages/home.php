@@ -134,6 +134,10 @@ endif;
                         <?php else : ?>
                             <li class="bullet problem">Your version of PHP does NOT have the intl extension loaded.</li>
                         <?php endif; ?>
+
+                        <?php if (ini_get('zend.assertions') !== '1') : ?>
+                            <li class="bullet problem">You should set <code>zend.assertions</code> to <code>1</code> in your <code>php.ini</code> for your development environment.</li>
+                        <?php endif; ?>
                         </ul>
                     </div>
                     <div class="column">

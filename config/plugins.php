@@ -19,15 +19,18 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
+ /*
+  * List of plugins to load in the form `PluginName` => `[configuration options]`.
+  *
+  * Available options:
+  * - onlyDebug: Load the plugin only in debug mode. Default false.
+  * - onlyCli: Load the plugin only in CLI mode. Default false.
+  * - optional: Do not throw an exception if the plugin is not found. Default false.
+  */
 return [
-    // Plugins only needed when in debug mode
     'DebugKit' => ['onlyDebug' => true],
-
-    // Optional plugins which are only needed in CLI commands
     'Bake' => ['onlyCli' => true, 'optional' => true],
-
-    // Required plugins only in CLI commands
     'Migrations' => ['onlyCli' => true],
 
-    // Add your custom plugins here
+    // Additional plugins here
 ];
