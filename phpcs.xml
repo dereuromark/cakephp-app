@@ -1,12 +1,29 @@
 <?xml version="1.0"?>
 <ruleset name="App">
-    <config name="installed_paths" value="../../cakephp/cakephp-codesniffer"/>
+    <config name="installed_paths" value="../../php-collective/code-sniffer"/>
 
-    <rule ref="CakePHP"/>
-    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint">
-        <exclude-pattern>*/src/Controller/*</exclude-pattern>
-    </rule>
+    <arg name="tab-width" value="4"/>
+    <arg value="nps"/>
 
     <file>src/</file>
     <file>tests/</file>
+    <file>config/</file>
+    <file>plugins/</file>
+
+    <exclude-pattern>/config/Seeds/</exclude-pattern>
+    <exclude-pattern>/config/Migrations/</exclude-pattern>
+    <exclude-pattern>/templates/</exclude-pattern>
+
+    <rule ref="PhpCollective"/>
+
+    <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInDeclaration"/>
+    <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInClosureUse"/>
+
+    <rule ref="PSR2.Classes.PropertyDeclaration.Underscore">
+        <severity>0</severity>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration.NoAssignment">
+        <severity>0</severity>
+    </rule>
+
 </ruleset>

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -9,11 +10,12 @@ declare(strict_types=1);
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         3.3.4
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @copyright Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link https://cakephp.org CakePHP(tm) Project
+ * @since 3.3.4
+ * @license https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Event\EventInterface;
@@ -39,6 +41,7 @@ class ErrorController extends AppController
      * beforeFilter callback.
      *
      * @param \Cake\Event\EventInterface<\Cake\Controller\Controller> $event Event.
+     *
      * @return \Cake\Http\Response|null|void
      */
     public function beforeFilter(EventInterface $event)
@@ -49,6 +52,7 @@ class ErrorController extends AppController
      * beforeRender callback.
      *
      * @param \Cake\Event\EventInterface<\Cake\Controller\Controller> $event Event.
+     *
      * @return \Cake\Http\Response|null|void
      */
     public function beforeRender(EventInterface $event)
@@ -62,6 +66,7 @@ class ErrorController extends AppController
      * afterFilter callback.
      *
      * @param \Cake\Event\EventInterface<\Cake\Controller\Controller> $event Event.
+     *
      * @return \Cake\Http\Response|null|void
      */
     public function afterFilter(EventInterface $event)

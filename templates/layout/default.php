@@ -30,8 +30,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
 
     <?= $this->fetch('meta') ?>
+
+    <?= $this->Html->css('/assets/bootstrap/dist/css/bootstrap.css') ?>
+    <?= $this->Html->css('/assets/bootstrap/dist/css/bootstrap-utilities.css') ?>
+    <?= $this->Html->css('/assets/@fortawesome/fontawesome-free/css/all.css') ?>
     <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
 </head>
 <body>
     <nav class="top-nav">
@@ -51,5 +54,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </main>
     <footer>
     </footer>
+
+    <?= $this->Html->script('/assets/bootstrap/dist/js/bootstrap.bundle.js'); ?>
+    <?= $this->fetch('script') ?>
 </body>
 </html>

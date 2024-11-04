@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -10,10 +11,11 @@ declare(strict_types=1);
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link      https://cakephp.org CakePHP(tm) Project
- * @since     3.0.0
- * @license   https://opensource.org/licenses/mit-license.php MIT License
+ * @link https://cakephp.org CakePHP(tm) Project
+ * @since 3.0.0
+ * @license https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Console;
 
 if (!defined('STDIN')) {
@@ -34,6 +36,8 @@ class Installer
 {
     /**
      * An array of directories to be made writable
+     *
+     * @var array<string>
      */
     public const WRITABLE_DIRS = [
         'logs',
@@ -50,7 +54,7 @@ class Installer
      * Does some routine installation tasks so people don't have to.
      *
      * @param \Composer\Script\Event $event The composer event object.
-     * @throws \Exception Exception raised by validator.
+     *
      * @return void
      */
     public static function postInstall(Event $event): void
@@ -75,6 +79,7 @@ class Installer
      *
      * @param string $dir The application's root directory.
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     *
      * @return void
      */
     public static function createAppLocalConfig(string $dir, IOInterface $io): void
@@ -92,6 +97,7 @@ class Installer
      *
      * @param string $dir The application's root directory.
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     *
      * @return void
      */
     public static function createWritableDirectories(string $dir, IOInterface $io): void
@@ -112,6 +118,7 @@ class Installer
      *
      * @param string $dir The application's root directory.
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     *
      * @return void
      */
     public static function setFolderPermissions(string $dir, IOInterface $io): void
@@ -122,13 +129,14 @@ class Installer
                 if (in_array($arg, ['Y', 'y', 'N', 'n'])) {
                     return $arg;
                 }
+
                 throw new Exception('This is not a valid answer. Please choose Y or n.');
             };
             $setFolderPermissions = $io->askAndValidate(
                 '<info>Set Folder Permissions ? (Default to Y)</info> [<comment>Y,n</comment>]? ',
                 $validator,
                 10,
-                'Y'
+                'Y',
             );
 
             if (in_array($setFolderPermissions, ['n', 'N'])) {
@@ -177,6 +185,7 @@ class Installer
      *
      * @param string $dir The application's root directory.
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     *
      * @return void
      */
     public static function setSecuritySalt(string $dir, IOInterface $io): void
@@ -192,6 +201,7 @@ class Installer
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
      * @param string $newKey key to set in the file
      * @param string $file A path to a file relative to the application's root
+     *
      * @return void
      */
     public static function setSecuritySaltInFile(string $dir, IOInterface $io, string $newKey, string $file): void
@@ -224,6 +234,7 @@ class Installer
      * @param \Composer\IO\IOInterface $io IO interface to write to console.
      * @param string $appName app name to set in the file
      * @param string $file A path to a file relative to the application's root
+     *
      * @return void
      */
     public static function setAppNameInFile(string $dir, IOInterface $io, string $appName, string $file): void

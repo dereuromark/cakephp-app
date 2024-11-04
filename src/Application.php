@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -10,10 +11,11 @@ declare(strict_types=1);
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link      https://cakephp.org CakePHP(tm) Project
- * @since     3.3.0
- * @license   https://opensource.org/licenses/mit-license.php MIT License
+ * @link https://cakephp.org CakePHP(tm) Project
+ * @since 3.3.0
+ * @license https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App;
 
 use Cake\Core\Configure;
@@ -51,7 +53,7 @@ class Application extends BaseApplication
         if (PHP_SAPI !== 'cli') {
             FactoryLocator::add(
                 'Table',
-                (new TableLocator())->allowFallbackClass(false)
+                (new TableLocator())->allowFallbackClass(false),
             );
         }
     }
@@ -60,6 +62,7 @@ class Application extends BaseApplication
      * Setup the middleware queue your application will use.
      *
      * @param \Cake\Http\MiddlewareQueue $middlewareQueue The middleware queue to setup.
+     *
      * @return \Cake\Http\MiddlewareQueue The updated middleware queue.
      */
     public function middleware(MiddlewareQueue $middlewareQueue): MiddlewareQueue
@@ -97,9 +100,11 @@ class Application extends BaseApplication
     /**
      * Register application container services.
      *
-     * @param \Cake\Core\ContainerInterface $container The Container to update.
-     * @return void
      * @link https://book.cakephp.org/5/en/development/dependency-injection.html#dependency-injection
+     *
+     * @param \Cake\Core\ContainerInterface $container The Container to update.
+     *
+     * @return void
      */
     public function services(ContainerInterface $container): void
     {
