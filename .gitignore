@@ -55,3 +55,4 @@ yarn-error.log
 webroot/assets/
 webroot/css/webfonts/
 .ddev/*
+config/Migrations/schema-dump-default.lock

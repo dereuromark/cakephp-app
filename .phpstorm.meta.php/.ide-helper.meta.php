@@ -3,6 +3,66 @@
 namespace PHPSTORM_META {
 
 	expectedArguments(
+		\App\Model\Entity\Article::get(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\Article'),
+	);
+
+	expectedArguments(
+		\App\Model\Entity\Article::getError(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\Article'),
+	);
+
+	expectedArguments(
+		\App\Model\Entity\Article::getInvalidField(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\Article'),
+	);
+
+	expectedArguments(
+		\App\Model\Entity\Article::getOriginal(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\Article'),
+	);
+
+	expectedArguments(
+		\App\Model\Entity\Article::has(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\Article'),
+	);
+
+	expectedArguments(
+		\App\Model\Entity\Article::hasValue(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\Article'),
+	);
+
+	expectedArguments(
+		\App\Model\Entity\Article::isDirty(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\Article'),
+	);
+
+	expectedArguments(
+		\App\Model\Entity\Article::isEmpty(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\Article'),
+	);
+
+	expectedArguments(
+		\App\Model\Entity\Article::setDirty(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\Article'),
+	);
+
+	expectedArguments(
+		\App\Model\Entity\Article::setError(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\Article'),
+	);
+
+	expectedArguments(
 		\Cake\Cache\Cache::add(),
 		2,
 		argumentsSet('cacheEngines'),
@@ -214,6 +274,7 @@ namespace PHPSTORM_META {
 	override(
 		\Cake\Datasource\ModelAwareTrait::fetchModel(0),
 		map([
+			'Articles' => \App\Model\Table\ArticlesTable::class,
 			'DebugKit.Panels' => \DebugKit\Model\Table\PanelsTable::class,
 			'DebugKit.Requests' => \DebugKit\Model\Table\RequestsTable::class,
 		]),
@@ -254,6 +315,7 @@ namespace PHPSTORM_META {
 	override(
 		\Cake\ORM\Locator\LocatorAwareTrait::fetchTable(0),
 		map([
+			'Articles' => \App\Model\Table\ArticlesTable::class,
 			'DebugKit.Panels' => \DebugKit\Model\Table\PanelsTable::class,
 			'DebugKit.Requests' => \DebugKit\Model\Table\RequestsTable::class,
 		]),
@@ -262,6 +324,7 @@ namespace PHPSTORM_META {
 	override(
 		\Cake\ORM\Locator\LocatorInterface::get(0),
 		map([
+			'Articles' => \App\Model\Table\ArticlesTable::class,
 			'DebugKit.Panels' => \DebugKit\Model\Table\PanelsTable::class,
 			'DebugKit.Requests' => \DebugKit\Model\Table\RequestsTable::class,
 		]),
@@ -280,6 +343,7 @@ namespace PHPSTORM_META {
 	override(
 		\Cake\ORM\Table::belongToMany(0),
 		map([
+			'Articles' => \Cake\ORM\Association\BelongsToMany::class,
 			'DebugKit.Panels' => \Cake\ORM\Association\BelongsToMany::class,
 			'DebugKit.Requests' => \Cake\ORM\Association\BelongsToMany::class,
 		]),
@@ -288,6 +352,7 @@ namespace PHPSTORM_META {
 	override(
 		\Cake\ORM\Table::belongsTo(0),
 		map([
+			'Articles' => \Cake\ORM\Association\BelongsTo::class,
 			'DebugKit.Panels' => \Cake\ORM\Association\BelongsTo::class,
 			'DebugKit.Requests' => \Cake\ORM\Association\BelongsTo::class,
 		]),
@@ -306,6 +371,7 @@ namespace PHPSTORM_META {
 	override(
 		\Cake\ORM\Table::hasMany(0),
 		map([
+			'Articles' => \Cake\ORM\Association\HasMany::class,
 			'DebugKit.Panels' => \Cake\ORM\Association\HasMany::class,
 			'DebugKit.Requests' => \Cake\ORM\Association\HasMany::class,
 		]),
@@ -314,6 +380,7 @@ namespace PHPSTORM_META {
 	override(
 		\Cake\ORM\Table::hasOne(0),
 		map([
+			'Articles' => \Cake\ORM\Association\HasOne::class,
 			'DebugKit.Panels' => \Cake\ORM\Association\HasOne::class,
 			'DebugKit.Requests' => \Cake\ORM\Association\HasOne::class,
 		]),
@@ -338,6 +405,7 @@ namespace PHPSTORM_META {
 	expectedArguments(
 		\Cake\TestSuite\TestCase::addFixture(),
 		0,
+		'app.Articles',
 		'core.Articles',
 		'core.ArticlesMoreTranslations',
 		'core.ArticlesTags',
@@ -528,9 +596,11 @@ namespace PHPSTORM_META {
 		0,
 		'content',
 		'content_type',
+		'created',
 		'element',
 		'id',
 		'method',
+		'modified',
 		'panel',
 		'request_id',
 		'requested_at',
@@ -1000,7 +1070,11 @@ namespace PHPSTORM_META {
 
 	registerArgumentsSet(
 		'columnNames',
-
+		'content',
+		'created',
+		'id',
+		'modified',
+		'title',
 	);
 
 	registerArgumentsSet(
@@ -1088,6 +1162,15 @@ namespace PHPSTORM_META {
 	);
 
 	registerArgumentsSet(
+		'entityFields:App\Model\Entity\Article',
+		'content',
+		'created',
+		'id',
+		'modified',
+		'title',
+	);
+
+	registerArgumentsSet(
 		'entityFields:DebugKit\Model\Entity\Panel',
 		'content',
 		'element',
@@ -1112,6 +1195,11 @@ namespace PHPSTORM_META {
 
 	registerArgumentsSet(
 		'routePaths',
+		'Articles::add',
+		'Articles::delete',
+		'Articles::edit',
+		'Articles::index',
+		'Articles::view',
 		'DebugKit.Composer::checkDependencies',
 		'DebugKit.Dashboard::index',
 		'DebugKit.Dashboard::reset',
@@ -1128,7 +1216,7 @@ namespace PHPSTORM_META {
 
 	registerArgumentsSet(
 		'tableNames',
-
+		'articles',
 	);
 
 	registerArgumentsSet(
