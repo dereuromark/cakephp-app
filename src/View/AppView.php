@@ -26,11 +26,14 @@ use Cake\View\View;
  * Your application's default view class
  *
  * @link https://book.cakephp.org/5/en/views.html#the-app-view
- * @property \BootstrapUI\View\Helper\HtmlHelper $Html
- * @property \BootstrapUI\View\Helper\FormHelper $Form
+ * @property \App\View\Helper\HtmlHelper $Html
+ * @property \App\View\Helper\FormHelper $Form
  * @property \BootstrapUI\View\Helper\FlashHelper $Flash
  * @property \BootstrapUI\View\Helper\PaginatorHelper $Paginator
  * @property \BootstrapUI\View\Helper\BreadcrumbsHelper $Breadcrumbs
+ * @property \Templating\View\Helper\TemplatingHelper $Templating
+ * @property \Templating\View\Helper\IconHelper $Icon
+ * @property \Templating\View\Helper\IconSnippetHelper $IconSnippet
  */
 class AppView extends View
 {
@@ -47,6 +50,11 @@ class AppView extends View
      */
     public function initialize(): void
     {
-        $this->initializeUI(['layout' => false]);
+        //$this->initializeUI(['layout' => false]);
+        $this->addHelper('Html');
+
+        $this->addHelper('Templating.Templating');
+        $this->addHelper('Templating.Icon');
+        $this->addHelper('Templating.IconSnippet');
     }
 }

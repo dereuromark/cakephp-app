@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "337bb16c1e773cde7d48a3b95be740ad",
+    "content-hash": "9df85fd794e1e64757f0aa7aa424f007",
     "packages": [
         {
             "name": "cakephp/cakephp",
@@ -369,6 +369,61 @@
                 }
             ],
             "time": "2024-11-04T10:15:26+00:00"
+        },
+        {
+            "name": "dereuromark/cakephp-templating",
+            "version": "0.2.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dereuromark/cakephp-templating.git",
+                "reference": "6ea4eb2a1616f5e7421619b21aebe0218a3ce2ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dereuromark/cakephp-templating/zipball/6ea4eb2a1616f5e7421619b21aebe0218a3ce2ac",
+                "reference": "6ea4eb2a1616f5e7421619b21aebe0218a3ce2ac",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "^5.0.3",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "dereuromark/cakephp-ide-helper": "^2.0.2",
+                "ext-yaml": "*",
+                "fig-r/psr2r-sniffer": "dev-master",
+                "phpunit/phpunit": "^10.2"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Templating\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Scherer",
+                    "homepage": "https://www.dereuromark.de",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "CakePHP plugin around templating and (font) icons",
+            "homepage": "https://github.com/dereuromark/cakephp-templating",
+            "keywords": [
+                "cakephp",
+                "icons",
+                "plugin",
+                "templating"
+            ],
+            "support": {
+                "issues": "https://github.com/dereuromark/cakephp-templating/issues",
+                "source": "https://github.com/dereuromark/cakephp-templating"
+            },
+            "time": "2024-10-22T20:47:07+00:00"
         },
         {
             "name": "friendsofcake/bootstrap-ui",

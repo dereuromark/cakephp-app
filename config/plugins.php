@@ -17,4 +17,5 @@ return [
         'optional' => true,
     ],
     'BootstrapUI' => [],
+    'Templating' => [],
 ];
