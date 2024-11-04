@@ -30,6 +30,9 @@ Read and edit the environment specific `config/app_local.php` and set up the
 `'Datasources'` and any other configuration relevant for your application.
 Other environment agnostic settings can be changed in `config/app.php`.
 
+Configuration enhancements:
+- app_custom.php added in between app.php (all defaults) and local one.
+
 ## Layout
 
 This app skeleton uses BS 5, and in particular a npm based install:

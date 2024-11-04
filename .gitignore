@@ -54,3 +54,4 @@ yarn-error.log
 
 webroot/assets/
 webroot/css/webfonts/
+.ddev/*
