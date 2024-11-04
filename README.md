@@ -3,7 +3,7 @@
 
 A skeleton for creating applications with [CakePHP](https://cakephp.org) 5.x.
 
-This is a **BS(5) flavored app skeleton**
+This is a **[Bootstrap](https://getbootstrap.com/) flavored app skeleton**
 - community fork from original [app](https://github.com/cakephp/app)
 - enhanced code sniffer included
 - IdeHelper and PHPStan ready out of the box
@@ -32,7 +32,7 @@ Other environment agnostic settings can be changed in `config/app.php`.
 
 ## Layout
 
-This app skeleton uses Bootstrap 5, and in particular a npm based install:
+This app skeleton uses BS 5, and in particular a npm based install:
 
 - `composer assets` to run basic script here
-- FA6 icons included
+- FA 6 icons included
