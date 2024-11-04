@@ -15,4 +15,10 @@ return [
     'DebugKit' => [
         'safeTld' => ['site'],
     ],
+
+    'IdeHelper' => [
+        'arrayAsGenerics' => true,
+        'objectAsGenerics' => true,
+        'templateCollectionObject' => 'iterable',
+    ],
 ];
