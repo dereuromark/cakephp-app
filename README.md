@@ -13,16 +13,15 @@ The framework source code can be found here: [cakephp/cakephp](https://github.co
 ## Installation
 Download the code.
 
+Composer install the app.
+
+    composer install
+
 Then use docker (e.g. ddev) to set up a server.
 
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
+    ddev start
 
-```bash
-bin/cake server -p 8765
-```
-
-Then visit `http://localhost:8765` to see the welcome page.
+Then visit `https://app.ddev.site/` to see the welcome page.
 
 ## Configuration
 
