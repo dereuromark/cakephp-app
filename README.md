@@ -32,7 +32,7 @@ Other environment agnostic settings can be changed in `config/app.php`.
 
 ## Layout
 
-This app skeleton uses Boostrap 5, and in particular a npm based install:
+This app skeleton uses Bootstrap 5, and in particular a npm based install:
 
 - `composer assets` to run basic script here
 - FA6 icons included
