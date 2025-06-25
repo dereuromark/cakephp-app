@@ -20,5 +20,6 @@ return [
         'arrayAsGenerics' => true,
         'objectAsGenerics' => true,
         'templateCollectionObject' => 'iterable',
+        'preferLinkOverUsesInTests' => true,
     ],
 ];

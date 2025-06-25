@@ -163,8 +163,13 @@ namespace PHPSTORM_META {
 			'datetimefractional' => \Cake\Database\Type\DateTimeFractionalType::class,
 			'decimal' => \Cake\Database\Type\DecimalType::class,
 			'float' => \Cake\Database\Type\FloatType::class,
+			'geometry' => \Cake\Database\Type\StringType::class,
 			'integer' => \Cake\Database\Type\IntegerType::class,
 			'json' => \Cake\Database\Type\JsonType::class,
+			'linestring' => \Cake\Database\Type\StringType::class,
+			'nativeuuid' => \Cake\Database\Type\UuidType::class,
+			'point' => \Cake\Database\Type\StringType::class,
+			'polygon' => \Cake\Database\Type\StringType::class,
 			'smallinteger' => \Cake\Database\Type\IntegerType::class,
 			'string' => \Cake\Database\Type\StringType::class,
 			'text' => \Cake\Database\Type\StringType::class,
@@ -190,8 +195,13 @@ namespace PHPSTORM_META {
 		'datetimefractional',
 		'decimal',
 		'float',
+		'geometry',
 		'integer',
 		'json',
+		'linestring',
+		'nativeuuid',
+		'point',
+		'polygon',
 		'smallinteger',
 		'string',
 		'text',
@@ -226,6 +236,23 @@ namespace PHPSTORM_META {
 			'list' => \Cake\ORM\Query::class,
 			'recent' => \Cake\ORM\Query::class,
 			'threaded' => \Cake\ORM\Query::class,
+		]),
+	);
+
+	override(
+		\Cake\Http\ServerRequest::getAttribute(0),
+		map([
+			'base' => 'string',
+			'cspScriptNonce' => 'string',
+			'cspStyleNonce' => 'string',
+			'csrfToken' => 'string',
+			'formTokenData' => 'array',
+			'here' => 'string',
+			'paging' => 'array',
+			'params' => 'array',
+			'route' => \Cake\Routing\Route\Route::class,
+			'session' => \Cake\Http\Session::class,
+			'webroot' => 'string',
 		]),
 	);
 
@@ -301,6 +328,27 @@ namespace PHPSTORM_META {
 			'recent' => \Cake\ORM\Query::class,
 			'threaded' => \Cake\ORM\Query::class,
 		]),
+	);
+
+	override(
+		\Cake\ORM\Table::getBehavior(),
+		map([
+			'CounterCache' => \Cake\ORM\Behavior\CounterCacheBehavior::class,
+			'Timed' => \DebugKit\Model\Behavior\TimedBehavior::class,
+			'Timestamp' => \Cake\ORM\Behavior\TimestampBehavior::class,
+			'Translate' => \Cake\ORM\Behavior\TranslateBehavior::class,
+			'Tree' => \Cake\ORM\Behavior\TreeBehavior::class,
+		]),
+	);
+
+	expectedArguments(
+		\Cake\ORM\Table::hasBehavior(),
+		0,
+		'CounterCache',
+		'Timed',
+		'Timestamp',
+		'Translate',
+		'Tree',
 	);
 
 	override(
@@ -422,6 +470,7 @@ namespace PHPSTORM_META {
 		'plugin.Bake.Posts',
 		'plugin.Bake.ProductVersions',
 		'plugin.Bake.Products',
+		'plugin.Bake.Relations',
 		'plugin.Bake.Tags',
 		'plugin.Bake.TodoItems',
 		'plugin.Bake.TodoItemsTodoLabels',
@@ -793,69 +842,63 @@ namespace PHPSTORM_META {
 	);
 
 	expectedArguments(
-		\Migrations\AbstractMigration::table(),
+		\Migrations\BaseMigration::table(),
 		0,
 		argumentsSet('tableNames'),
 	);
 
 	expectedArguments(
-		\Migrations\AbstractSeed::table(),
+		\Migrations\BaseSeed::table(),
 		0,
 		argumentsSet('tableNames'),
 	);
 
 	expectedArguments(
-		\Migrations\Table::addColumn(),
+		\Migrations\Db\Table::addColumn(),
 		0,
 		argumentsSet('columnNames'),
 	);
 
 	expectedArguments(
-		\Migrations\Table::addColumn(),
+		\Migrations\Db\Table::addColumn(),
 		1,
 		argumentsSet('columnTypes'),
 	);
 
 	expectedArguments(
-		\Migrations\Table::changeColumn(),
+		\Migrations\Db\Table::changeColumn(),
 		0,
 		argumentsSet('columnNames'),
 	);
 
 	expectedArguments(
-		\Migrations\Table::changeColumn(),
+		\Migrations\Db\Table::changeColumn(),
 		1,
 		argumentsSet('columnTypes'),
 	);
 
 	expectedArguments(
-		\Migrations\Table::hasColumn(),
+		\Migrations\Db\Table::hasColumn(),
 		0,
 		argumentsSet('columnNames'),
 	);
 
 	expectedArguments(
-		\Migrations\Table::removeColumn(),
+		\Migrations\Db\Table::removeColumn(),
 		0,
 		argumentsSet('columnNames'),
 	);
 
 	expectedArguments(
-		\Migrations\Table::renameColumn(),
+		\Migrations\Db\Table::renameColumn(),
 		0,
 		argumentsSet('columnNames'),
 	);
 
 	expectedArguments(
-		\Migrations\Table::renameColumn(),
+		\Migrations\Db\Table::renameColumn(),
 		1,
 		argumentsSet('columnNames'),
-	);
-
-	expectedArguments(
-		\Phinx\Seed\AbstractSeed::table(),
-		0,
-		argumentsSet('tableNames'),
 	);
 
 	expectedArguments(
@@ -886,26 +929,33 @@ namespace PHPSTORM_META {
 		'CONTENT_TYPE',
 		'COREPACK_ENABLE_DOWNLOAD_PROMPT',
 		'COREPACK_HOME',
+		'DDEV_APPROOT',
 		'DDEV_COMPOSER_ROOT',
 		'DDEV_DATABASE',
 		'DDEV_DATABASE_FAMILY',
 		'DDEV_DOCROOT',
 		'DDEV_FILES_DIR',
 		'DDEV_FILES_DIRS',
+		'DDEV_GOARCH',
+		'DDEV_GOOS',
 		'DDEV_HOSTNAME',
 		'DDEV_MUTAGEN_ENABLED',
 		'DDEV_PHP_VERSION',
 		'DDEV_PRIMARY_URL',
+		'DDEV_PRIMARY_URL_PORT',
+		'DDEV_PRIMARY_URL_WITHOUT_PORT',
 		'DDEV_PROJECT',
 		'DDEV_PROJECT_TYPE',
 		'DDEV_ROUTER_HTTPS_PORT',
 		'DDEV_ROUTER_HTTP_PORT',
+		'DDEV_SCHEME',
 		'DDEV_SITENAME',
 		'DDEV_TLD',
 		'DDEV_VERSION',
 		'DDEV_WEBSERVER_TYPE',
 		'DDEV_WEB_ENTRYPOINT',
 		'DDEV_XDEBUG_ENABLED',
+		'DDEV_XHPROF_MODE',
 		'DEBIAN_FRONTEND',
 		'DEPLOY_NAME',
 		'DOCKER_IP',
@@ -913,10 +963,9 @@ namespace PHPSTORM_META {
 		'DOCUMENT_ROOT',
 		'DOCUMENT_URI',
 		'DRUSH_OPTIONS_URI',
+		'EXECIGNORE',
 		'GATEWAY_INTERFACE',
 		'GIT_ASKPASS',
-		'GOARCH',
-		'GOOS',
 		'HISTFILE',
 		'HOME',
 		'HOSTNAME',
@@ -938,7 +987,6 @@ namespace PHPSTORM_META {
 		'LS_COLORS',
 		'MH_SMTP_BIND_ADDR',
 		'MYSQL_HISTFILE',
-		'MYSQL_PWD',
 		'NGINX_SITE_TEMPLATE',
 		'NODE_EXTRA_CA_CERTS',
 		'NVM_CD_FLAGS',
@@ -973,6 +1021,7 @@ namespace PHPSTORM_META {
 		'SHELL_VERBOSITY',
 		'SHLVL',
 		'SSH_AUTH_SOCK',
+		'START_SCRIPT_TIMEOUT',
 		'TERM',
 		'TERMINUS_CACHE_DIR',
 		'TERMINUS_HIDE_UPDATE_MESSAGE',
@@ -1000,7 +1049,12 @@ namespace PHPSTORM_META {
 
 	registerArgumentsSet(
 		'columnNames',
-
+		'content',
+		'created',
+		'id',
+		'modified',
+		'status',
+		'title',
 	);
 
 	registerArgumentsSet(
@@ -1072,6 +1126,11 @@ namespace PHPSTORM_META {
 		'Error.log',
 		'Error.skipLog',
 		'Error.trace',
+		'IdeHelper',
+		'IdeHelper.arrayAsGenerics',
+		'IdeHelper.objectAsGenerics',
+		'IdeHelper.preferLinkOverUsesInTests',
+		'IdeHelper.templateCollectionObject',
 		'Migrations',
 		'Migrations.backend',
 		'Security',
@@ -1128,7 +1187,7 @@ namespace PHPSTORM_META {
 
 	registerArgumentsSet(
 		'tableNames',
-
+		'articles',
 	);
 
 	registerArgumentsSet(
