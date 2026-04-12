@@ -18,10 +18,12 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\Middleware\HostHeaderMiddleware;
 use Cake\Core\Configure;
 use Cake\Core\ContainerInterface;
 use Cake\Datasource\FactoryLocator;
 use Cake\Error\Middleware\ErrorHandlerMiddleware;
+use Cake\Event\EventManagerInterface;
 use Cake\Http\BaseApplication;
 use Cake\Http\Middleware\BodyParserMiddleware;
 use Cake\Http\Middleware\CsrfProtectionMiddleware;
@@ -50,12 +52,11 @@ class Application extends BaseApplication
         // Call parent to load bootstrap from files.
         parent::bootstrap();
 
-        if (PHP_SAPI !== 'cli') {
-            FactoryLocator::add(
-                'Table',
-                (new TableLocator())->allowFallbackClass(false),
-            );
-        }
+        // By default, does not allow fallback classes.
+        FactoryLocator::add(
+            'Table',
+            (new TableLocator())->allowFallbackClass(false),
+        );
     }
 
     /**
@@ -71,6 +72,11 @@ class Application extends BaseApplication
             // Catch any exceptions in the lower layers,
             // and make an error page/response
             ->add(new ErrorHandlerMiddleware(Configure::read('Error'), $this))
+
+            // Validate Host header to prevent Host Header Injection attacks.
+            // In production, ensures App.fullBaseUrl is configured and validates
+            // the incoming Host header against it.
+            ->add(new HostHeaderMiddleware())
 
             // Handle plugin/theme assets like CakePHP normally does.
             ->add(new AssetMiddleware([
@@ -108,5 +114,19 @@ class Application extends BaseApplication
      */
     public function services(ContainerInterface $container): void
     {
+    }
+
+    /**
+     * Register custom event listeners here
+     *
+     * @link https://book.cakephp.org/5/en/core-libraries/events.html#registering-listeners
+     *
+     * @param \Cake\Event\EventManagerInterface $eventManager
+     *
+     * @return \Cake\Event\EventManagerInterface
+     */
+    public function events(EventManagerInterface $eventManager): EventManagerInterface
+    {
+        return $eventManager;
     }
 }
